@@ -12,7 +12,7 @@ if os.uname().machine != 'x86_64':
     print("Invalid system bit")
     exit
 
-if not os.path.is_file('/usr/local/bin/v2ray/v2ray'): 
+if not os.path.isfile('/usr/local/bin/v2ray/v2ray'): 
     print("V2ray bin not installed")
     exit
 
@@ -21,16 +21,16 @@ def v2ray_chan_menu():
     print("---------main menu for selection---------")
     print(" 1.   check v2ray configuration")
     print(" 2.   change v2ray configuration")
+    print(" 3.   install v2ray")
     opt = input("Pls choose:")
-    match opt:
-        case '1':
-            view_v2ray_config_info()
-        case '2':
-            change_v2ray_config()
-        case '3':
-            install_v2ray()
-        case _:
-            print("Invalid input")     
+    if opt == '1':
+        view_v2ray_config_info()
+    elif opt == '2':
+        change_v2ray_config()
+    elif opt == '3':
+        install_v2ray()
+    else:
+        print("Invalid input")     
 
 # checking v2ray server configuration information        
 def view_v2ray_config_info():
@@ -58,11 +58,10 @@ def change_v2ray_config():
     print("----------v2ray configuration update selection---------")
     print(" 1.    change v2ray port")
     opt = input("Pls choose:")
-    match opt:
-        case '1':
-            change_v2ray_ip()
-        case _:
-            print("Invalid input")
+    if opt == '1':
+        change_v2ray_ip()
+    else:
+        print("Invalid input")
     
  
 def change_v2ray_ip():
@@ -120,7 +119,6 @@ def install_v2ray():
     # download file and show bar progress
     with tqdm(total=file_size, unit='B', unit_scale=True, desc=file_name) as pbar:
         urlretrieve(download_link, filename=file_name, reporthook=lambda blocknum, blocksize, totalsize: progress_update(pbar, blocknum, blocksize))
-        
 
 if __name__ == "__main__":
     v2ray_chan_menu()
