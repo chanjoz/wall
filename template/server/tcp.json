@@ -4,16 +4,16 @@
         "error": "/var/log/v2ray/error.log",
         "loglevel": "warning"
     },
-    "inbound": {
+    "inbounds": {
         "port": 2512,
         "protocol": "vmess",
         "settings": {
             "udp": true,
             "clients": [
                 {
-                    "id": "2512-beambeam",
+                    "id": "29be5fae-1606-4abc-9123-5beefdfcfcda",
                     "level": 1,
-                    "alterId": 512
+                    "alterId": 112
                 }
             ]
         }
